@@ -30,9 +30,33 @@ Direct Marketing Charitable Contribution Prediction
 
 ### Data File Description
 
+- General Background 
+  - This data file includes information on donors who have made charitable contributions to a National Veteran's Agency.
+- Dataset Characteristics
+  - 7600 records
+  - 19 variables
+    - 17 numeric variables
+    - 2 categorical variables
+- Variables of Interest
+  - Response Variable
+    - `Average.Gift`: will be used as the response variable for this project to understand the factors behind the average donation amount someone makes
+  - Explanatory Variables
+    - `Age`: the age of the donor
+    - `Own.Home.`: whether or not someone owns a home or if it's unknown
+    - `Num.Children`: the number of children, if any, that the donor has
+    - `Total.Wealth`: a wealth rating from 0-9 with 9 being the wealthiest that is based on median family income and population statistics
+    - `Sex`: the gender of the donor
+    - `Number.of.Gifts`: the number of donations made
+    - `Time.Between.Gifts`: the avg number of months between donations
+    - `Largest.Gift`: the largest donation made (in dollars)
+    - `Smallest.Gift`: the smallest donation made (in dollars)
+    - `Other.Gifts`: number of times the donor has responded to a mail order donation offer
+
 ### Data Set Background Information
 
 ### Statement of Interest
+
+Being that there are over a million charities in the U.S. (https://nccs.urban.org/publication/nonprofit-sector-brief-2019#finances), there is reliance on charitable contributions to ensure they're able to continue to deliver their services and value to their respective communities. To best be able to do that, a better understanding of the ideal donor would be beneficial to hopefully maximize the amount of donations they receive. With this project, we can hopefully develop a good understanding of what characteristics an ideal donor might have.
 
 ### Evidence that the data can be loaded into R
 

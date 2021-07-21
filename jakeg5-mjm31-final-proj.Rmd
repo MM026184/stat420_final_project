@@ -1,0 +1,45 @@
+---
+title: "Data Analysis Project Proposal"
+author: "STAT 420, Summer 2021, Michael McClanahan (NetID: mjm31) and Jake Goodman (NetID: jakeg5)"
+date: ''
+output:
+  html_document: 
+    theme: readable
+    toc: yes
+  pdf_document: default
+urlcolor: cyan
+---
+
+***
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+options(scipen = 1, digits = 4, width = 80, fig.align = "center")
+```
+
+### Contributing Students
+
+The following students will be contributing to the group project:
+
+- Michael McClanahan (NetID: mjm31)
+- Jake Goodman (NetID: jakeg5)
+
+
+### Tentative Project Title
+
+Direct Marketing Charitable Contribution Prediction
+
+### Data File Description
+
+### Data Set Background Information
+
+### Statement of Interest
+
+### Evidence that the data can be loaded into R
+
+```{r}
+nvo_data = read.table('nvo.txt', sep = '\t',header = TRUE, fileEncoding = "UTF-8")
+head(nvo_data)
+```
+
+***
+      

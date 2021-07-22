@@ -57,6 +57,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -173,10 +195,11 @@ pre code {
 <ul>
 <li><a href="#contributing-students">Contributing Students</a></li>
 <li><a href="#tentative-project-title">Tentative Project Title</a></li>
-<li><a href="#data-file-description">Data File Description</a></li>
 <li><a href="#data-set-background-information">Data Set Background Information</a></li>
+<li><a href="#data-file-description">Data File Description</a></li>
 <li><a href="#statement-of-interest">Statement of Interest</a></li>
 <li><a href="#evidence-that-the-data-can-be-loaded-into-r">Evidence that the data can be loaded into R</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 </div>
 
@@ -191,16 +214,58 @@ pre code {
 </div>
 <div id="tentative-project-title" class="section level3">
 <h3>Tentative Project Title</h3>
-<p>Direct Marketing Charitable Contribution Prediction</p>
-</div>
-<div id="data-file-description" class="section level3">
-<h3>Data File Description</h3>
+<p><em>Direct Marketing Charitable Contribution Prediction</em></p>
 </div>
 <div id="data-set-background-information" class="section level3">
 <h3>Data Set Background Information</h3>
+<p><span class="citation">Special Interest Group on Knowledge Discovery and Data Mining (SIGKDD) (1998)</span> - This data file includes information on donors who have made charitable contributions to a national veteran’s agency.</p>
+</div>
+<div id="data-file-description" class="section level3">
+<h3>Data File Description</h3>
+<ul>
+<li>File Information
+<ul>
+<li>Name: <code>nvo.txt</code></li>
+<li>Type: standard text document</li>
+<li>Encoding: UTF-8</li>
+<li>Delimitation Method: Tab</li>
+</ul></li>
+<li>Dataset Characteristics
+<ul>
+<li>Each record contains information about a donor that has made charitable contributions to a national veteran’s agency</li>
+<li>7600 records</li>
+<li>19 variables
+<ul>
+<li>17 numeric variables</li>
+<li>2 categorical variables</li>
+</ul></li>
+</ul></li>
+<li>Variables of Interest
+<ul>
+<li>Response Variable
+<ul>
+<li><code>Current.Gift</code>: the amount of the donor’s current donation (in dollars).</li>
+</ul></li>
+<li>Explanatory Variables
+<ul>
+<li><code>Age</code>: the age of the donor</li>
+<li><code>Own.Home.</code>: a categorical variable regarding whether or not the donor owns a home</li>
+<li><code>Num.Children</code>: the number of children, if any, that the donor has</li>
+<li><code>Total.Wealth</code>: a wealth rating from 0-9 (with 9 being the wealthiest) that is based on median family income and population statistics</li>
+<li><code>Sex</code>: the gender of the donor</li>
+<li><code>Number.of.Gifts</code>: the number of donations made</li>
+<li><code>Time.Between.Gifts</code>: the avg number of months between donations</li>
+<li><code>Largest.Gift</code>: the largest donation made (in dollars)</li>
+<li><code>Smallest.Gift</code>: the smallest donation made (in dollars)</li>
+<li><code>Other.Gifts</code>: number of times the donor has responded to a mail order donation offer</li>
+<li><code>Average.Gift</code>: will be used as the response variable for this project to understand the factors behind the average donation amount someone makes</li>
+</ul></li>
+</ul></li>
+</ul>
 </div>
 <div id="statement-of-interest" class="section level3">
 <h3>Statement of Interest</h3>
+<p>According to the <span class="citation">National Center for Charitable Statistics (NCCS) (2020)</span>, as of 2016, over 1.54 million nonprofit organizations were registered in the United States with the IRS. As is the case for most nonprofit organizations, there is reliance on charitable contributions to ensure their ability to continue to deliver their services and value to their respective communities. To help maximize donation profits for such charities, statistical models can be leveraged to provide a better understanding of their ideal donors. Predictive insights, like being able to predict donation amounts before sending a request via direct mail, could improve donor targeting practices, potentially yielding greater profits while minimizing the efforts of valuable marketing resources and costs associated with creating marketing collateral. With this project, we will be attempting to build a statistical model capable of doing just this. Specifically, we aim to use donor information from a national veteran’s agency to predict the amount (in dollars) of each donor’s current contribution to said national veteran’s agency.</p>
 </div>
 <div id="evidence-that-the-data-can-be-loaded-into-r" class="section level3">
 <h3>Evidence that the data can be loaded into R</h3>
@@ -234,7 +299,18 @@ head(nvo_data)</code></pre>
 ## 4              5.000             4.830             14.14
 ## 5              5.000             5.000             12.25
 ## 6             11.533             7.940             10.10</code></pre>
+</div>
+<div id="references" class="section level3">
+<h3>References</h3>
 <hr />
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-nccs" class="csl-entry">
+National Center for Charitable Statistics (NCCS). 2020. <span>“The Nonprofit Sector in Brief 2019.”</span> 2020. <a href="https://nccs.urban.org/publication/nonprofit-sector-brief-2019">https://nccs.urban.org/publication/nonprofit-sector-brief-2019</a>.
+</div>
+<div id="ref-kdd_data" class="csl-entry">
+Special Interest Group on Knowledge Discovery and Data Mining (SIGKDD). 1998. <span>“KDD Cup 1998: Direct Marketing for Profit Optimization.”</span> 1998. <a href="https://kdd.org/kdd-cup/view/kdd-cup-1998/Data">https://kdd.org/kdd-cup/view/kdd-cup-1998/Data</a>.
+</div>
+</div>
 </div>
 
 

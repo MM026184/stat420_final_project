@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="STAT 420, Summer 2021, Michael McClanahan (NetID: mjm31) and Jake Goodman (NetID: jakeg5)" />
+<meta name="author" content="STAT 420, Summer 2021, Jake Goodman (NetID: jakeg5) and Michael McClanahan (NetID: mjm31)" />
 
 
 <title>Data Analysis Project Proposal</title>
@@ -187,7 +187,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">Data Analysis Project Proposal</h1>
-<h4 class="author">STAT 420, Summer 2021, Michael McClanahan (NetID: mjm31) and Jake Goodman (NetID: jakeg5)</h4>
+<h4 class="author">STAT 420, Summer 2021, Jake Goodman (NetID: jakeg5) and Michael McClanahan (NetID: mjm31)</h4>
 
 </div>
 
@@ -208,17 +208,18 @@ pre code {
 <h3>Contributing Students</h3>
 <p>The following students will be contributing to the group project:</p>
 <ul>
-<li>Michael McClanahan (NetID: mjm31)</li>
 <li>Jake Goodman (NetID: jakeg5)</li>
+<li>Michael McClanahan (NetID: mjm31)</li>
 </ul>
 </div>
 <div id="tentative-project-title" class="section level3">
 <h3>Tentative Project Title</h3>
-<p><em>Direct Marketing Charitable Contribution Prediction</em></p>
+<p><em>Donation Prediction for Direct Marketing</em></p>
 </div>
 <div id="data-set-background-information" class="section level3">
 <h3>Data Set Background Information</h3>
-<p><span class="citation">Special Interest Group on Knowledge Discovery and Data Mining (SIGKDD) (1998)</span> - This data file includes information on donors who have made charitable contributions to a national veteran’s agency.</p>
+<p>The data file for this project was obtained from the <span class="citation">StatLib Data and Story Library (DSAL) (n.d.)</span>. The file contains data sampled from a much larger dataset from the 1998 KDD Cup, an annual data science competition put on by the Association for Computing Machinery’s <span class="citation">Special Interest Group on Knowledge Discovery and Data Mining (SIGKDD) (1998)</span>. For the competition, a dataset containing 95412 observations and 481 variables was provided. Likely to aid in ease of analysis, the DSAL generated a sample of the same dataset, which we will use for this analysis, that contains 7600 observations with 19 variables for each observation. As was the case during the 1998 KDD Cup, each de-identified observation in the dataset contains information for someone that previously donated to a Congressionally-chartered US veterans’ service organization or one of its affiliates. At the time, this national veterans’ agency represented the special interests of paralyzed veterans and their families and obtained most of its funding from charitable donations.</p>
+<p><em>Links to the above datasets can be found below in the <a href="#references">References</a> section.</em></p>
 </div>
 <div id="data-file-description" class="section level3">
 <h3>Data File Description</h3>
@@ -236,7 +237,7 @@ pre code {
 <li>7600 records</li>
 <li>19 variables
 <ul>
-<li>17 numeric variables</li>
+<li>17 numeric variables <em>(5 of these will be ignored for this analysis)</em></li>
 <li>2 categorical variables</li>
 </ul></li>
 </ul></li>
@@ -262,43 +263,36 @@ pre code {
 </ul></li>
 </ul></li>
 </ul>
+<p><em>Additional <code>Sqrt.</code> variables will be ignored for this analysis</em></p>
 </div>
 <div id="statement-of-interest" class="section level3">
 <h3>Statement of Interest</h3>
-<p>According to the <span class="citation">National Center for Charitable Statistics (NCCS) (2020)</span>, as of 2016, over 1.54 million nonprofit organizations were registered in the United States with the IRS. As is the case for most nonprofit organizations, there is reliance on charitable contributions to ensure their ability to continue to deliver their services and value to their respective communities. To help maximize donation profits for such charities, statistical models can be leveraged to provide a better understanding of their ideal donors. Predictive insights, like being able to predict donation amounts before sending a request via direct mail, could improve donor targeting practices, potentially yielding greater profits while minimizing the efforts of valuable marketing resources and costs associated with creating marketing collateral. With this project, we will be attempting to build a statistical model capable of doing just this. Specifically, we aim to use donor information from a national veteran’s agency to predict the amount (in dollars) of each donor’s current contribution to said national veteran’s agency.</p>
+<p>According to the <span class="citation">National Center for Charitable Statistics (NCCS) (2020)</span>, as of 2016, over 1.54 million nonprofit organizations were registered in the United States with the IRS. As is the case for most nonprofit organizations, there is reliance on charitable contributions to ensure their ability to continue to deliver their services and value to their respective communities. To help maximize donation profits for such charities, statistical models can be leveraged to provide a better understanding of their ideal donors. Predictive insights, like being able to predict donation amounts before sending a request via direct mail, could improve donor targeting practices, potentially yielding greater profits while minimizing the efforts of valuable marketing resources and costs associated with creating marketing collateral. With this project, we will be attempting to build a statistical model capable of doing just this. Specifically, we aim to use donor information from a national veterans’ agency to predict the amount (in dollars) of each donor’s current contribution to said national veteran’s agency.</p>
 </div>
 <div id="evidence-that-the-data-can-be-loaded-into-r" class="section level3">
 <h3>Evidence that the data can be loaded into R</h3>
-<pre class="r"><code>nvo_data = read.table(&#39;nvo.txt&#39;, sep = &#39;\t&#39;,header = TRUE, fileEncoding = &quot;UTF-8&quot;)
-head(nvo_data)</code></pre>
-<pre><code>##   Age Own.Home. Num.Children Income Sex Total.Wealth Other.Gifts
-## 1  64         H            0      1   F            2           0
-## 2  91         U            0      1   M            1           1
-## 3  82         H            0      5   M            9          42
-## 4  61         H            0      1   F            7           0
-## 5  71         U            0      5   M            9           2
-## 6  90         U            0      1   F            9           0
-##   Number.of.Gifts Smallest.Gift Largest.Gift Previous.Gift Time.Between.Gifts
-## 1              14             3          300           300                  3
-## 2               8            25           50            50                 13
-## 3              25             2          250           250                  6
-## 4               3            20           25            25                  5
-## 5               1            25           25            25                  5
-## 6              28             5          133           133                  5
-##   Average.Gift Current.Gift Sqrt.Smallest.Gift Sqrt.Largest.Gift
-## 1        98.79          200              1.732            17.321
-## 2        40.88          200              5.000             7.071
-## 3        12.76          200              1.414            15.811
-## 4        23.33          200              4.472             5.000
-## 5        25.00          150              5.000             5.000
-## 6        63.04          102              2.236            11.533
-##   Sqrt.Previous.Gift Sqrt.Average.Gift Sqrt.Current.Gift
-## 1             17.321             9.939             14.14
-## 2              7.071             6.394             14.14
-## 3             15.811             3.572             14.14
-## 4              5.000             4.830             14.14
-## 5              5.000             5.000             12.25
-## 6             11.533             7.940             10.10</code></pre>
+<pre class="r"><code>library(tibble)
+nvo_data = read.table(&quot;nvo.txt&quot;, sep = &quot;\t&quot;,header = TRUE, fileEncoding = &quot;UTF-8&quot;)
+nvo_data = as_tibble(nvo_data)
+nvo_data</code></pre>
+<pre><code>## # A tibble: 7,600 x 19
+##      Age Own.Home. Num.Children Income Sex   Total.Wealth Other.Gifts
+##    &lt;int&gt; &lt;chr&gt;            &lt;int&gt;  &lt;int&gt; &lt;chr&gt;        &lt;int&gt;       &lt;int&gt;
+##  1    64 H                    0      1 F                2           0
+##  2    91 U                    0      1 M                1           1
+##  3    82 H                    0      5 M                9          42
+##  4    61 H                    0      1 F                7           0
+##  5    71 U                    0      5 M                9           2
+##  6    90 U                    0      1 F                9           0
+##  7    57 H                    0      1 F                4           0
+##  8    38 U                    0      7 F                6           0
+##  9    43 H                    0      6 M                9           7
+## 10    79 U                    0      1 M                0           0
+## # ... with 7,590 more rows, and 12 more variables: Number.of.Gifts &lt;int&gt;,
+## #   Smallest.Gift &lt;dbl&gt;, Largest.Gift &lt;dbl&gt;, Previous.Gift &lt;dbl&gt;,
+## #   Time.Between.Gifts &lt;int&gt;, Average.Gift &lt;dbl&gt;, Current.Gift &lt;dbl&gt;,
+## #   Sqrt.Smallest.Gift &lt;dbl&gt;, Sqrt.Largest.Gift &lt;dbl&gt;,
+## #   Sqrt.Previous.Gift &lt;dbl&gt;, Sqrt.Average.Gift &lt;dbl&gt;, Sqrt.Current.Gift &lt;dbl&gt;</code></pre>
 </div>
 <div id="references" class="section level3">
 <h3>References</h3>
@@ -309,6 +303,9 @@ National Center for Charitable Statistics (NCCS). 2020. <span>“The Nonprofit S
 </div>
 <div id="ref-kdd_data" class="csl-entry">
 Special Interest Group on Knowledge Discovery and Data Mining (SIGKDD). 1998. <span>“KDD Cup 1998: Direct Marketing for Profit Optimization.”</span> 1998. <a href="https://kdd.org/kdd-cup/view/kdd-cup-1998/Data">https://kdd.org/kdd-cup/view/kdd-cup-1998/Data</a>.
+</div>
+<div id="ref-statlib" class="csl-entry">
+StatLib Data and Story Library (DSAL). n.d. <span>“PVA | DASL.”</span> <a href="https://dasl.datadescription.com/datafile/pva/">https://dasl.datadescription.com/datafile/pva/</a>.
 </div>
 </div>
 </div>
